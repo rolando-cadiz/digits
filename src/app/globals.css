@@ -5,10 +5,36 @@ body {
   height: 100%;
   padding: 0;
   margin: 0;
+  background-image: url('/1348.jpg');
+  background-position: center;
+  background-size: cover;
+
 }
 .wrapper {
   box-sizing: border-box;
   min-height: 100%;
   display: flex;
   flex-direction: column;
+}
+
+:root {
+  --nat-navbar-bg: #ECECEC;
+  --nat-navbar-bg-rgb: 236, 236, 236;
+  --nat-navbar-text-color: white;
+}
+
+footer, footer a {
+  color: var(--nat-navbar-text-color);
+}
+
+body .navbar {
+  --bs-navbar-active-color: var(--nat-navbar-highlight-text);
+  --bs-navbar-brand-color: var(--nat-navbar-text-color);
+  --bs-navbar-brand-hover-color: var(--nat-navbar-highlight-text);
+  --bs-navbar-color: var(--nat-navbar-text-color);
+  --bs-navbar-hover-color: var(--nat-navbar-highlight-text);
+}
+
+bg-dark a.dropdown-item {
+  color: var(--nat-navbar-bg);
 }

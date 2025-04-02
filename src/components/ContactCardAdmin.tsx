@@ -2,13 +2,13 @@
 
 import { Card } from 'react-bootstrap';
 import Image from 'next/image';
-import { Contact } from '@/lib/validationSchemas';
+import type { Contacts } from '@prisma/client';
 
 type Props = {
-  contact: Contact;
+  contact: Contacts;
 };
 
-const ContactCard = ({ contact }: Props) => (
+const ContactCardAdmin = ({ contact }: Props) => (
   <Card className="h-100 shadow-sm">
     <Card.Header className="d-flex align-items-center gap-2">
       <Image
@@ -26,8 +26,9 @@ const ContactCard = ({ contact }: Props) => (
     <Card.Body>
       <Card.Subtitle className="mb-2 text-muted">{contact.address}</Card.Subtitle>
       <Card.Text>{contact.description}</Card.Text>
+      <p className="blockquote-footer">{contact.owner}</p>
     </Card.Body>
   </Card>
 );
 
-export default ContactCard;
+export default ContactCardAdmin;

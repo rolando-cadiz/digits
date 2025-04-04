@@ -1,17 +1,15 @@
+/* eslint-disable @next/next/no-img-element */
+
 'use client';
 
 import { Card } from 'react-bootstrap';
-import Image from 'next/image';
+import Link from 'next/link';
 import { Contact } from '@/lib/validationSchemas';
 
-type Props = {
-  contact: Contact;
-};
-
-const ContactCard = ({ contact }: Props) => (
+const ContactCard = ({ contact }: { contact: Contact }) => (
   <Card className="h-100 shadow-sm">
     <Card.Header className="d-flex align-items-center gap-2">
-      <Image
+      <img
         src={contact.image}
         alt={`${contact.firstName} ${contact.lastName}`}
         width={75}
@@ -20,12 +18,16 @@ const ContactCard = ({ contact }: Props) => (
       />
       <Card.Title className="mb-0">
         {contact.firstName}
+        {' '}
         {contact.lastName}
       </Card.Title>
     </Card.Header>
     <Card.Body>
       <Card.Subtitle className="mb-2 text-muted">{contact.address}</Card.Subtitle>
       <Card.Text>{contact.description}</Card.Text>
+      <Card.Footer>
+        <Link href={`edit/${contact.id}`}>Edit</Link>
+      </Card.Footer>
     </Card.Body>
   </Card>
 );

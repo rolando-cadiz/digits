@@ -21,7 +21,7 @@ const AdminPage = async () => {
         {/* Contact Cards */}
         <Row>
           <Col>
-            <h1>List Contacts (Admin)</h1>
+            <h1 style={{ color: 'white' }}>List Contacts (Admin)</h1>
           </Col>
         </Row>
         <Row xs={1} md={2} lg={3} className="g-4">

@@ -46,6 +46,33 @@ async function main() {
     });
   });
 }
+async function seedContacts() {
+  const contacts = config.defaultContacts;
+
+  for (let i = 0; i < contacts.length; i++) {
+    const contact = contacts[i];
+
+    console.log(`  Adding contact: ${contact.firstName} ${contact.lastName} (${contact.owner})`);
+    // eslint-disable-next-line no-await-in-loop
+    await prisma.contacts.upsert({
+      where: { id: i + 1 },
+      update: {},
+      create: {
+        firstName: contact.firstName,
+        lastName: contact.lastName,
+        address: contact.address,
+        image: contact.image,
+        description: contact.description,
+        owner: contact.owner,
+      },
+    });
+  }
+}
+
+(async () => {
+  await seedContacts();
+  await main();
+})();
 main()
   .then(() => prisma.$disconnect())
   .catch(async (e) => {

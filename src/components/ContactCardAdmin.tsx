@@ -1,8 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
+
 'use client';
 
 import { Card } from 'react-bootstrap';
-import Image from 'next/image';
 import type { Contacts } from '@prisma/client';
+import Link from 'next/link';
 
 type Props = {
   contact: Contacts;
@@ -11,7 +13,7 @@ type Props = {
 const ContactCardAdmin = ({ contact }: Props) => (
   <Card className="h-100 shadow-sm">
     <Card.Header className="d-flex align-items-center gap-2">
-      <Image
+      <img
         src={contact.image}
         alt={`${contact.firstName} ${contact.lastName}`}
         width={75}
@@ -27,6 +29,7 @@ const ContactCardAdmin = ({ contact }: Props) => (
       <Card.Subtitle className="mb-2 text-muted">{contact.address}</Card.Subtitle>
       <Card.Text>{contact.description}</Card.Text>
       <p className="blockquote-footer">{contact.owner}</p>
+      <Link href={`edit/${contact.id}`}>Edit</Link>
     </Card.Body>
   </Card>
 );

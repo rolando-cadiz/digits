@@ -1,4 +1,4 @@
-<img src="doc/digits-landing.png"
+<img src="doc/digits-landing.png">
 
 ## Installation
 

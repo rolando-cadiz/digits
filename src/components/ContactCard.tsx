@@ -2,11 +2,13 @@
 
 'use client';
 
-import { Card } from 'react-bootstrap';
+import { Card, ListGroup } from 'react-bootstrap';
 import Link from 'next/link';
-import { Contact } from '@/lib/validationSchemas';
+import { Contact, Note } from '@/lib/validationSchemas';
+import NoteItem from './NoteItem'; // Ensure the correct path to NoteItem
+import AddNoteForm from './AddNoteForm'; // Ensure the correct path to AddNoteForm
 
-const ContactCard = ({ contact }: { contact: Contact }) => (
+const ContactCard = ({ contact, notes }: { contact: Contact, notes: Note[] }) => (
   <Card className="h-100 shadow-sm">
     <Card.Header className="d-flex align-items-center gap-2">
       <img
@@ -25,10 +27,15 @@ const ContactCard = ({ contact }: { contact: Contact }) => (
     <Card.Body>
       <Card.Subtitle className="mb-2 text-muted">{contact.address}</Card.Subtitle>
       <Card.Text>{contact.description}</Card.Text>
-      <Card.Footer>
-        <Link href={`edit/${contact.id}`}>Edit</Link>
-      </Card.Footer>
+
     </Card.Body>
+    <ListGroup variant="flush">
+      {notes.map((note) => <NoteItem key={note.id} note={note} />)}
+    </ListGroup>
+    <AddNoteForm contact={contact} />
+    <Card.Footer>
+      <Link href={`edit/${contact.id}`}>Edit</Link>
+    </Card.Footer>
   </Card>
 );
 
